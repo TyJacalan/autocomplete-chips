@@ -12,9 +12,10 @@ This component is built using Rails' FormBuilder, making it easy to integrate in
 ## Usage
 1. Add the `autocomplete chip` component into your custom form builder or create one if you don't have one already.
 ```ruby
-  def autocomplete_chip(attribute, url:, placeholder: "Type something...", selected_items: [])
-    @template.content_tag :div, data: { controller: "autocomplete-chip", autocomplete_chip_url_value: url }, class: "w-full" do
+def autocomplete_chip(attribute, url:, placeholder: "Type something...", selected_items: [])
+    @template.content_tag :div, data: { controller: "autocomplete-chip", autocomplete_chip_url_value: url }, class: "w-full space-y-2" do
       @template.concat label(attribute)
+      @template.concat @template.content_tag(:div, "", id: "autocomplete-chip-chips", data: { autocomplete_chip_target: "chips" } )
       @template.concat(
         text_field(
           attribute,
@@ -44,6 +45,7 @@ export default class extends Controller {
 
   connect() {
     this.selectedAnimals = [];
+    console.log("chip...");
   }
 
   search() {
@@ -122,7 +124,6 @@ export default class extends Controller {
     this.hiddenTarget.value = this.selectedAnimals.join(",");
   }
 }
-
 ```
 
 3. Use the autocomplete_chip component inside of a form
