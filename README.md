@@ -1,17 +1,15 @@
 # Autocomplete Chip Input Component for Rails
-
-### Overview
 The Autocomplete Chip Input component is a reusable and customizable form input field designed for Ruby on Rails applications. It enables users to search, select, and visually manage multiple items with autocomplete suggestions, all presented in a user-friendly chip format.
 
 This component is built using Rails' FormBuilder, making it easy to integrate into any form in your Rails application. It leverages StimulusJS for dynamic frontend behavior and Tailwind CSS for modern, responsive styling.
 
-### Features
+## Features
 **Dynamic Autocomplete:** As users type, the component fetches and displays autocomplete suggestions from a configurable endpoint.
 **Chip-Based Selection:** Selected items are displayed as chips, providing a clean and intuitive UI for managing multiple selections.
 **Configurable:** Easily customize the search endpoint, placeholder text, and pre-selected items directly from the view.
 **Reusable:** Implemented as a Rails FormBuilder method, the component can be reused across different forms and models with minimal configuration.
 
-### Usage
+## Usage
 1. Add the `autocomplete chip` component into your custom form builder or create one if you don't have one already.
 ```ruby
   def autocomplete_chip(attribute, url:, placeholder: "Type something...", selected_items: [])
@@ -143,7 +141,7 @@ Copy code
 **placeholder (optional):** Placeholder text for the input field.
 **selected_items (optional):** An array of items to pre-populate the hidden field (useful for editing forms).
 
-### Customization
+## Customization
 This component is designed to be easily extendable. You can customize or extend it further by modifying the Stimulus controller, adjusting the Tailwind CSS classes, or adding additional functionality within the CustomFormBuilder.
 
 ## License
