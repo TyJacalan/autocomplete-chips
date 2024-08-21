@@ -1,0 +1,12 @@
+<div class="h-screen w-full">
+<span class="text-sm">Back to <%= link_to "Home", root_path, class: "text-teal-600" %></span>
+<h1 class="text-3xl font-bold">Animals</h1>
+<ul>
+  <% @animals.each do |animal| %>
+    <li class="hover:text-teal-600 transition-colors">
+      <%= link_to animal.name, animal_path(animal.id) %>
+    </li>
+  <% end %>
+</ul>
+</div>
+

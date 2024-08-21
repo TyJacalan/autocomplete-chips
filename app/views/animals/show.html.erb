@@ -1,0 +1,11 @@
+<div class="h-screen w-full">
+<span class="text-sm">Back to <%= link_to "Animals", animals_path, class: "text-teal-600" %></span>
+<h1 class="text-3xl font-bold"><%= @animal.name %></h1>
+<ul>
+  <li>age: <%= @animal.age %></li>
+  <li>adopted: <%= @animal.adopted %></li>
+  <% if @animal.owner %>
+    <li>owner: <%= @animal.owner.name %></li>
+  <% end %>
+</ul>
+</div>
