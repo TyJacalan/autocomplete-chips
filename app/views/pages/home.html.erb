@@ -1,0 +1,26 @@
+<div class="text-center space-y-2 max-w-md">
+  <h1 class="text-3xl font-bold">Autocomplete Chips Input</h1>
+  <p>Type an input, retrieve autocompletion results from an application model, and add multiple inputs visualized through scripts</p>
+</div>
+
+<%= form_with class: "max-w-xl w-full flex flex-col space-y-4 p-6 m-4 rounded-md shadow-md bg-teal-800 text-gray-200 text-center" do |f| %>
+  <div>
+    <h1 class="text-3xl font-bold">Assign Pets to Owners</h1>
+    <div class="text-sm text-gray-300">
+      <p>Add a pet or list of pets and add an owner. </p>
+      <p>Click submit to assign the pets to the listed owner.</p>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-4 text-left">
+    <%= f.label :owner %>
+    <%= f.select :owner, @owners.map { |o| o.name } %>
+
+    <%= f.label :animals %>
+    <div data-controller="autocomplete" class="w-full">
+      <%= f.text_field :animals, class: "h-10 w-full p-2 rounded-md shadow-md text-gray-800" %>
+      <div id="autocomplete-results"></div>
+    </div>
+  </div>
+<% end %>
+
