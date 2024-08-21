@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["input", "results", "hidden"];
+  static targets = ["input", "chips", "results", "hidden"];
   static values = { url: String };
 
   connect() {
@@ -52,7 +52,7 @@ export default class extends Controller {
     const chip = document.createElement("span");
     chip.textContent = animal;
     chip.classList.add(
-      "chip",
+      "w-fit",
       "bg-teal-600",
       "text-white",
       "rounded-full",
@@ -66,7 +66,7 @@ export default class extends Controller {
     );
     chip.addEventListener("click", () => this.removeChip(animal, chip));
 
-    this.inputTarget.insertAdjacentElement("beforebegin", chip);
+    this.chipsTarget.appendChild(chip);
 
     this.updateHiddenField();
     this.inputTarget.value = "";
