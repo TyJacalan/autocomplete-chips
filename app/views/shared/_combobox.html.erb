@@ -1,0 +1,6 @@
+<div class="combobox">
+  <%= f.text_field method, id: "#{method}_combobox", data: { controller: "combobox", action: "input->combobox#search", combobox_target: "input", combobox_search_url: search_url } %>
+  <turbo-frame id="combobox-results-<%= method %>">
+    <ul class="combobox-list" data-combobox-target="results"></ul>
+  </turbo-frame>
+</div>

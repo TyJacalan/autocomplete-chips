@@ -4,5 +4,5 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import AutocompleteChipController from "./autocomplete_chip_controller"
+application.register("autocomplete-chip", AutocompleteChipController)

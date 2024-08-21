@@ -1,26 +1,22 @@
-<div class="text-center space-y-2 max-w-md">
-  <h1 class="text-3xl font-bold">Autocomplete Chips Input</h1>
-  <p>Type an input, retrieve autocompletion results from an application model, and add multiple inputs visualized through scripts</p>
-</div>
-
-<%= form_with class: "max-w-xl w-full flex flex-col space-y-4 p-6 m-4 rounded-md shadow-md bg-teal-800 text-gray-200 text-center" do |f| %>
+<span>Go to <%= link_to " Animals", animals_path, class: "text-teal-600" %></span>
+<%= form_with url: assign_animals_path, method: :post, builder: CustomFormBuilder, class: "max-w-xl w-full flex flex-col space-y-4 p-6 m-4 rounded-md shadow-md bg-teal-800 text-gray-200 text-center" do |f| %>
   <div>
     <h1 class="text-3xl font-bold">Assign Pets to Owners</h1>
     <div class="text-sm text-gray-300">
-      <p>Add a pet or list of pets and add an owner. </p>
+      <p>Add a pet or list of pets and add an owner.</p>
       <p>Click submit to assign the pets to the listed owner.</p>
     </div>
   </div>
 
   <div class="flex flex-col gap-4 text-left">
     <%= f.label :owner %>
-    <%= f.select :owner, @owners.map { |o| o.name } %>
+    <%= f.select :owner_id, @owners.map { |o| [o.name, o.id] }, { include_blank: true }, class: "h-10 w-full p-2 rounded-md shadow-md text-gray-800" %>
 
-    <%= f.label :animals %>
-    <div data-controller="autocomplete" class="w-full">
-      <%= f.text_field :animals, class: "h-10 w-full p-2 rounded-md shadow-md text-gray-800" %>
-      <div id="autocomplete-results"></div>
-    </div>
+    <%= f.autocomplete_chip :animals, url: searches_animals_path, placeholder: "Start typing to search for animals..." %>
+  </div>
+
+  <div class="flex justify-center">
+    <%= f.submit "Submit", class: "w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded" %>
   </div>
 <% end %>
 
